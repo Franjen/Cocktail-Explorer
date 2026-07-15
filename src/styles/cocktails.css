@@ -1,0 +1,104 @@
+/*
+Estilos para la página
+de cócteles.
+*/
+
+
+.cocktails-grid {
+
+
+    display: grid;
+
+
+    grid-template-columns:
+
+        repeat(auto-fill,
+            minmax(250px, 1fr));
+
+
+    gap: 25px;
+
+
+    margin-top: 30px;
+
+
+}
+
+
+
+
+
+.cocktail-card {
+
+
+    background: white;
+
+
+    border-radius: 15px;
+
+
+    overflow: hidden;
+
+
+    box-shadow:
+
+        0 5px 15px rgba(0, 0, 0, .15);
+
+
+    transition: .3s;
+
+
+}
+
+
+
+
+.cocktail-card:hover {
+
+
+    transform: translateY(-8px);
+
+
+}
+
+
+
+
+
+.cocktail-card img {
+
+
+    width: 100%;
+
+
+    height: 250px;
+
+
+    object-fit: cover;
+
+
+}
+
+
+
+
+
+.cocktail-card h2 {
+
+
+    padding: 15px;
+
+
+}
+
+
+
+
+
+.cocktail-card p {
+
+
+    padding: 0 15px 15px;
+
+
+}
