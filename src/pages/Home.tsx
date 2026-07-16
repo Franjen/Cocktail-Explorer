@@ -1,40 +1,73 @@
 /*
+=========================================================
 Home.tsx
 
 Página principal del proyecto.
 
-Es la primera vista que verá
-el usuario al entrar a la aplicación.
+Es la primera pantalla que verá el usuario.
+Desde aquí podrá acceder rápidamente
+al explorador de cócteles.
+=========================================================
 */
 
+import { Link } from "react-router-dom";
+
+import "../styles/home.css";
 
 function Home() {
 
-
     return (
 
-        <main>
+        <main className="home">
 
+            {/* Título principal */}
 
             <h1>
-                🍹 Bienvenido a Cocktail Explorer
+
+                🍹 Cocktail Explorer
+
             </h1>
 
-
+            {/* Descripción */}
 
             <p>
-                Explora diferentes cócteles,
-                ingredientes y preparaciones
-                utilizando una API externa.
+
+                Descubre cientos de cócteles,
+                conoce sus ingredientes,
+                aprende cómo prepararlos
+                y encuentra nuevas bebidas
+                para cualquier ocasión.
+
             </p>
 
+            {/* Imagen principal */}
 
+            <img
+
+                src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
+
+                alt="Cocktail"
+
+            />
+
+            {/* Botón */}
+
+            <Link
+
+                to="/cocktails"
+
+                className="btn-home"
+
+            >
+
+                Explorar Cócteles
+
+            </Link>
 
         </main>
 
     );
 
 }
-
 
 export default Home;

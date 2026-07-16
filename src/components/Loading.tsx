@@ -1,26 +1,23 @@
-/*
-Componente Loading
-
-Se reutilizará cada vez que
-esperemos información de una API.
-*/
-
+import "../styles/loading.css";
 
 function Loading() {
 
     return (
 
-        <div>
+        <div className="loading">
 
-            <h2>
-                🍹 Cargando cócteles...
-            </h2>
+            <div className="spinner"></div>
+
+            <p>
+
+                Cargando cócteles...
+
+            </p>
 
         </div>
 
     );
 
 }
-
 
 export default Loading;

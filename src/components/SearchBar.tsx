@@ -1,96 +1,42 @@
-/*
-SearchBar
+import { useEffect, useState } from "react";
 
-Componente reutilizable encargado
-de capturar el texto que escribe
-el usuario.
-
-No realiza búsquedas directamente.
-
-Solamente comunica el texto
-a la página padre mediante Props.
-*/
-
-
-import { useState } from "react";
-
-
+import "../styles/search.css";
 
 interface Props {
 
-
-    /*
-    Función que recibirá el texto
-    escrito por el usuario.
-    */
-
     onSearch: (value: string) => void;
-
 
 }
 
-
-
 function SearchBar({
+
     onSearch
 
 }: Props) {
 
-
-
-    /*
-    Estado local del input.
-
-    Guarda temporalmente lo que
-    escribe el usuario.
-    */
-
-    const [value, setValue] =
-        useState("");
-
-
-
+    const [value, setValue] = useState("");
 
     /*
-    Controla el envío del formulario.
+    Cada vez que cambia el texto
+    esperamos 500 ms antes
+    de realizar la búsqueda.
     */
 
-    function handleSubmit(
-        e: React.FormEvent
-    ) {
+    useEffect(() => {
 
+        const timer = setTimeout(() => {
 
-        /*
-        Evita que la página
-        se recargue.
-        */
+            onSearch(value);
 
-        e.preventDefault();
+        }, 500);
 
+        return () => clearTimeout(timer);
 
-
-        /*
-        Enviamos el texto
-        al componente padre.
-        */
-
-        onSearch(value);
-
-
-
-    }
-
-
+    }, [value]);
 
     return (
 
-        <form
-
-            className="search-form"
-
-            onSubmit={handleSubmit}
-
-        >
+        <div className="search-form">
 
             <input
 
@@ -100,22 +46,18 @@ function SearchBar({
 
                 value={value}
 
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) =>
+
+                    setValue(e.target.value)
+
+                }
 
             />
 
-            <button>
-
-                Buscar
-
-            </button>
-
-        </form>
+        </div>
 
     );
 
 }
-
-
 
 export default SearchBar;
