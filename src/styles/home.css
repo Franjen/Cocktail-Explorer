@@ -67,3 +67,15 @@
     background: #e68900;
 
 }
+
+.buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    margin-top: 30px;
+
+}

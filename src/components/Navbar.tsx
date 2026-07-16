@@ -46,6 +46,16 @@ function Navbar() {
                     <Link to="/about">Acerca</Link>
                 </li>
 
+                <li>
+
+                    <Link to="/favorites">
+
+                        Favoritos
+
+                    </Link>
+
+                </li>
+
             </ul>
 
         </nav>

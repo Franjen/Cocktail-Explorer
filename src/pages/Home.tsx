@@ -20,49 +20,49 @@ function Home() {
 
         <main className="home">
 
-            {/* Título principal */}
-
             <h1>
 
                 🍹 Cocktail Explorer
 
             </h1>
 
-            {/* Descripción */}
-
             <p>
 
-                Descubre cientos de cócteles,
-                conoce sus ingredientes,
-                aprende cómo prepararlos
-                y encuentra nuevas bebidas
-                para cualquier ocasión.
+                Descubre cientos de cócteles utilizando
+                una API pública.
+
+                Aprende sus ingredientes,
+                preparación y guarda tus bebidas favoritas.
 
             </p>
 
-            {/* Imagen principal */}
+            <div className="buttons">
 
-            <img
+                <Link
 
-                src="https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
+                    to="/cocktails"
 
-                alt="Cocktail"
+                    className="btn-home"
 
-            />
+                >
 
-            {/* Botón */}
+                    Explorar
 
-            <Link
+                </Link>
 
-                to="/cocktails"
+                <Link
 
-                className="btn-home"
+                    to="/favorites"
 
-            >
+                    className="btn-home"
 
-                Explorar Cócteles
+                >
 
-            </Link>
+                    Favoritos
+
+                </Link>
+
+            </div>
 
         </main>
 

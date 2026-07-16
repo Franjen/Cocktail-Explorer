@@ -1,47 +1,37 @@
 /*
-Componente para mostrar errores.
+ErrorMessage.tsx
 
-Recibe un mensaje mediante Props.
+Componente reutilizable para mostrar
+mensajes de error al usuario.
 */
 
-
-interface Props {
-
-
-    /*
-    Texto del error.
-    */
-    message: string;
-
-
-}
-
-
+import "../styles/error.css";
 
 /*
-Recibimos la Prop message.
+Propiedades que recibe el componente.
 */
+interface Props {
+    message: string;
+}
 
-function ErrorMessage({
-    message
-}: Props) {
-
+function ErrorMessage({ message }: Props) {
 
     return (
 
-        <div>
+        <div className="error">
 
             <h2>
-                ⚠️ {message}
+                ⚠️
             </h2>
 
+            <p>
+                {message}
+            </p>
 
         </div>
 
     );
 
-
 }
-
 
 export default ErrorMessage;
