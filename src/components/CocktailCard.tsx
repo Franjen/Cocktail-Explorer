@@ -3,98 +3,238 @@
 | CocktailCard.tsx
 |--------------------------------------------------------------------------
 |
-| Este componente representa una tarjeta individual de un cóctel.
+| Tarjeta individual de un cóctel.
 |
 | Funciones:
-| - Mostrar la imagen del cóctel.
-| - Mostrar el nombre.
-| - Mostrar la categoría.
-| - Mostrar el tipo.
-| - Agregar o quitar favoritos.
-| - Ir a la página de detalles.
+|
+| - Mostrar imagen.
+| - Mostrar información básica.
+| - Agregar favoritos.
+| - Acceder al detalle.
 |
 |--------------------------------------------------------------------------
 */
 
-import { Link } from "react-router-dom";
-import type { Cocktail } from "../types/Cocktail";
 
-/* Hook para administrar favoritos */
-import { useFavorites } from "../hooks/useFavorites";
+import {
 
-/* -------------------------------------------------------------------------- */
-/* Interface                                                                   */
-/* -------------------------------------------------------------------------- */
+    Link
+
+} from "react-router-dom";
+
+
+import type {
+
+    Cocktail
+
+} from "../types/Cocktail";
+
+
+
+import {
+
+    useFavorites
+
+} from "../hooks/useFavorites";
+
+
+
+
+
+
 
 interface Props {
+
+
     cocktail: Cocktail;
+
+
 }
 
-/* -------------------------------------------------------------------------- */
-/* Componente                                                                  */
-/* -------------------------------------------------------------------------- */
 
-function CocktailCard({ cocktail }: Props) {
 
-    /*
-    Obtiene las funciones del Hook de favoritos.
-    */
+
+
+
+
+
+function CocktailCard({
+
+    cocktail
+
+}: Props) {
+
+
+
+
+
     const {
+
         toggleFavorite,
+
         isFavorite
+
     } = useFavorites();
+
+
+
+
+
+
 
     return (
 
+
         <article className="cocktail-card">
 
-            {/* Imagen */}
+
+
             <img
+
                 src={cocktail.strDrinkThumb}
+
                 alt={cocktail.strDrink}
+
             />
+
+
+
+
 
             <div className="card-content">
 
-                {/* Nombre */}
-                <h2>{cocktail.strDrink}</h2>
 
-                {/* Categoría */}
+
+                <h2>
+
+                    {cocktail.strDrink}
+
+                </h2>
+
+
+
+
+
                 <p>
-                    <strong>Categoría:</strong> {cocktail.strCategory}
+
+                    <strong>
+
+                        Categoría:
+
+                    </strong>
+
+                    {" "}
+
+                    {cocktail.strCategory}
+
                 </p>
 
-                {/* Tipo */}
+
+
+
+
                 <p>
-                    <strong>Tipo:</strong> {cocktail.strAlcoholic}
+
+                    <strong>
+
+                        Tipo:
+
+                    </strong>
+
+                    {" "}
+
+                    {cocktail.strAlcoholic}
+
                 </p>
 
-                {/* Botón Favoritos */}
+
+
+
+
                 <button
+
+
+                    type="button"
+
+
                     className="favorite-button"
-                    onClick={() => toggleFavorite(cocktail.idDrink)}
-                >
-                    {
-                        isFavorite(cocktail.idDrink)
-                            ? "❤️ Quitar favorito"
-                            : "🤍 Agregar favorito"
+
+
+
+                    onClick={() =>
+
+                        toggleFavorite(
+
+                            cocktail.idDrink
+
+                        )
+
                     }
+
+
+                >
+
+
+                    {
+
+                        isFavorite(
+
+                            cocktail.idDrink
+
+                        )
+
+
+                            ? "❤️ Quitar favorito"
+
+                            : "🤍 Agregar favorito"
+
+
+                    }
+
+
                 </button>
 
-                {/* Botón Detalles */}
+
+
+
+
                 <Link
-                    to={`/cocktails/${cocktail.idDrink}`}
+
+
+                    to={
+
+                        `/cocktails/${cocktail.idDrink}`
+
+                    }
+
+
+
                     className="btn-detail"
+
+
                 >
+
                     Ver detalles
+
+
                 </Link>
+
+
+
+
 
             </div>
 
+
         </article>
+
 
     );
 
+
 }
+
+
+
 
 export default CocktailCard;

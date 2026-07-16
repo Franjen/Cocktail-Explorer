@@ -1,24 +1,48 @@
 /*
-=========================================================
-Home.tsx
-
-Página principal del proyecto.
-
-Es la primera pantalla que verá el usuario.
-Desde aquí podrá acceder rápidamente
-al explorador de cócteles.
-=========================================================
+|--------------------------------------------------------------------------
+| Home.tsx
+|--------------------------------------------------------------------------
+|
+| Página principal de la aplicación.
+|
+| Es la primera pantalla que verá el usuario.
+|
+| Funciones:
+|
+| - Presentar la aplicación.
+| - Explicar su funcionamiento.
+| - Dirigir al explorador de cócteles.
+|
+|--------------------------------------------------------------------------
 */
 
-import { Link } from "react-router-dom";
+
+import {
+
+    Link
+
+} from "react-router-dom";
+
 
 import "../styles/home.css";
 
+
+
+
+
 function Home() {
+
+
 
     return (
 
+
+
         <main className="home">
+
+
+
+
 
             <h1>
 
@@ -26,17 +50,29 @@ function Home() {
 
             </h1>
 
+
+
+
+
             <p>
 
-                Descubre cientos de cócteles utilizando
-                una API pública.
+                Descubre cientos de cócteles,
 
-                Aprende sus ingredientes,
-                preparación y guarda tus bebidas favoritas.
+                conoce sus ingredientes,
+
+                preparación y guarda tus favoritos.
 
             </p>
 
+
+
+
+
             <div className="buttons">
+
+
+
+
 
                 <Link
 
@@ -46,9 +82,13 @@ function Home() {
 
                 >
 
-                    Explorar
+                    Explorar cócteles
 
                 </Link>
+
+
+
+
 
                 <Link
 
@@ -58,16 +98,29 @@ function Home() {
 
                 >
 
-                    Favoritos
+                    Mis favoritos
 
                 </Link>
 
+
+
+
+
             </div>
+
+
+
+
 
         </main>
 
+
+
     );
 
+
 }
+
+
 
 export default Home;

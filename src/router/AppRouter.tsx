@@ -3,86 +3,230 @@
 | AppRouter.tsx
 |--------------------------------------------------------------------------
 |
-| Controla toda la navegación de la aplicación.
+| Archivo encargado de controlar
+| toda la navegación de la aplicación.
+|
+| Aquí se definen todas las rutas.
 |
 |--------------------------------------------------------------------------
 */
 
+
 import {
+
     BrowserRouter,
+
     Routes,
+
     Route
+
 } from "react-router-dom";
 
-// Componentes globales
+
+
+
+
+/*
+Componentes globales
+*/
+
 import Navbar from "../components/Navbar";
+
 import Footer from "../components/Footer";
 
-// Páginas
+
+
+
+
+
+
+/*
+Páginas
+*/
+
 import Home from "../pages/Home";
+
 import Cocktails from "../pages/Cocktails";
+
 import CocktailDetail from "../pages/CocktailDetail";
+
 import Favorites from "../pages/Favorites";
+
 import About from "../pages/About";
+
 import NotFound from "../pages/NotFound";
+
+
+
+
+
+
+
 
 function AppRouter() {
 
+
+
     return (
+
+
+
 
         <BrowserRouter>
 
-            {/* Barra de navegación */}
+
+
+
+
+            {/* Barra superior */}
+
             <Navbar />
 
-            {/* Rutas */}
+
+
+
+
+
+
             <Routes>
 
+
+
+
+
                 {/* Página principal */}
+
                 <Route
+
                     path="/"
+
                     element={<Home />}
+
                 />
 
-                {/* Lista de cócteles */}
+
+
+
+
+
+
+
+                {/* Explorador */}
+
                 <Route
+
                     path="/cocktails"
+
                     element={<Cocktails />}
+
                 />
+
+
+
+
+
+
+
+
+                {/* Detalle */}
+
+                <Route
+
+                    path="/cocktails/:id"
+
+                    element={<CocktailDetail />}
+
+                />
+
+
+
+
+
+
+
 
                 {/* Favoritos */}
+
                 <Route
+
                     path="/favorites"
+
                     element={<Favorites />}
+
                 />
 
-                {/* Detalle del cóctel */}
-                <Route
-                    path="/cocktails/:id"
-                    element={<CocktailDetail />}
-                />
 
-                {/* Acerca de */}
+
+
+
+
+
+
+                {/* Información */}
+
                 <Route
+
                     path="/about"
+
                     element={<About />}
+
                 />
 
-                {/* Página 404 */}
+
+
+
+
+
+
+
+                {/* Ruta inexistente */}
+
                 <Route
+
                     path="*"
+
                     element={<NotFound />}
+
                 />
+
+
+
+
 
             </Routes>
 
+
+
+
+
+
+
+
             {/* Pie de página */}
-            <Footer />
+
+            <Footer>
+
+            </Footer>
+
+
+
+
+
+
 
         </BrowserRouter>
 
+
+
+
     );
 
+
+
 }
+
+
+
+
 
 export default AppRouter;

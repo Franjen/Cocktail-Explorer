@@ -1,8 +1,17 @@
 /*
-main.tsx es el punto de entrada de la aplicación.
-
-Aquí React monta toda la aplicación
-dentro del elemento "root".
+|--------------------------------------------------------------------------
+| main.tsx
+|--------------------------------------------------------------------------
+|
+| Punto de entrada principal de la aplicación.
+|
+| Funciones:
+| - Importar React.
+| - Importar ReactDOM.
+| - Importar los estilos globales.
+| - Renderizar el componente App.
+|
+|--------------------------------------------------------------------------
 */
 
 import React from "react";
@@ -10,12 +19,27 @@ import ReactDOM from "react-dom/client";
 
 import App from "./App";
 
-// Estilos globales
+/* Estilos globales */
 import "./styles/global.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+/*
+|--------------------------------------------------------------------------
+| Renderizado principal
+|--------------------------------------------------------------------------
+|
+| React monta toda la aplicación dentro del elemento
+| HTML con id="root".
+|
+| StrictMode ayuda a detectar posibles problemas
+| durante el desarrollo.
+|
+|--------------------------------------------------------------------------
+*/
 
-  // StrictMode ayuda a detectar errores durante el desarrollo
+ReactDOM.createRoot(
+  document.getElementById("root")!
+).render(
+
   <React.StrictMode>
 
     <App />

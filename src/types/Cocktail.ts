@@ -1,109 +1,86 @@
 /*
-Interface Cocktail
-
-Esta interface representa la información
-que recibiremos desde la API TheCocktailDB.
-
-TypeScript utiliza las interfaces para saber
-qué datos existen dentro de un objeto.
+|--------------------------------------------------------------------------
+| Cocktail.ts
+|--------------------------------------------------------------------------
+|
+| Interface que representa un cóctel obtenido desde
+| la API pública TheCocktailDB.
+|
+| TypeScript utiliza esta interface para conocer
+| la estructura exacta de cada objeto recibido.
+|
+|--------------------------------------------------------------------------
 */
-
 
 export interface Cocktail {
 
-
-    /*
-    Identificador único del cóctel.
-
-    Lo utilizaremos para abrir
-    la página de detalles.
-    */
+    /* Identificador único */
     idDrink: string;
 
-
-
-    /*
-    Nombre del cóctel.
-    Ejemplo:
-    "Margarita"
-    */
+    /* Nombre del cóctel */
     strDrink: string;
 
-
-
-    /*
-    Imagen principal del cóctel.
-    */
+    /* Imagen */
     strDrinkThumb: string;
 
-
-
-    /*
-    Categoría del cóctel.
-
-    Ejemplo:
-    Cocktail
-    Ordinary Drink
-    */
+    /* Categoría */
     strCategory: string;
 
-
-
-    /*
-    Indica si contiene alcohol.
-
-    Ejemplo:
-    Alcoholic
-    Non alcoholic
-    */
+    /* Tipo */
     strAlcoholic: string;
 
-
-
-    /*
-    Tipo de vaso utilizado.
-    */
+    /* Vaso recomendado */
     strGlass: string;
 
-
-
-    /*
-    Preparación del cóctel.
-    */
+    /* Preparación */
     strInstructions: string;
 
-
-
     /*
-    Ingredientes.
+    ------------------------------------------------------------------------
+    Ingredientes
 
-    La API separa los ingredientes
-    en varios campos:
-
-    strIngredient1
-    strIngredient2
-    etc.
-
-    Por eso usamos propiedades opcionales.
+    La API puede devolver hasta 15 ingredientes.
+    Todos son opcionales porque algunos cócteles
+    utilizan menos ingredientes.
+    ------------------------------------------------------------------------
     */
-
 
     strIngredient1?: string;
     strIngredient2?: string;
     strIngredient3?: string;
     strIngredient4?: string;
     strIngredient5?: string;
-
+    strIngredient6?: string;
+    strIngredient7?: string;
+    strIngredient8?: string;
+    strIngredient9?: string;
+    strIngredient10?: string;
+    strIngredient11?: string;
+    strIngredient12?: string;
+    strIngredient13?: string;
+    strIngredient14?: string;
+    strIngredient15?: string;
 
     /*
+    ------------------------------------------------------------------------
     Cantidades de cada ingrediente.
+    ------------------------------------------------------------------------
     */
-
 
     strMeasure1?: string;
     strMeasure2?: string;
     strMeasure3?: string;
     strMeasure4?: string;
     strMeasure5?: string;
+    strMeasure6?: string;
+    strMeasure7?: string;
+    strMeasure8?: string;
+    strMeasure9?: string;
+    strMeasure10?: string;
+    strMeasure11?: string;
+    strMeasure12?: string;
+    strMeasure13?: string;
+    strMeasure14?: string;
+    strMeasure15?: string;
 
 }
