@@ -1,116 +1,256 @@
 /*
-=========================================================
-useFavorites.ts
-
-Hook encargado de administrar
-los cócteles favoritos utilizando
-localStorage.
-
-Además sincroniza automáticamente
-todos los componentes de la aplicación.
-=========================================================
+|--------------------------------------------------------------------------
+| useFavorites.ts
+|--------------------------------------------------------------------------
+|
+| Hook personalizado para administrar favoritos.
+|
+| Funciones:
+|
+| - Guardar favoritos en localStorage.
+| - Recuperar favoritos al iniciar.
+| - Agregar favoritos.
+| - Eliminar favoritos.
+| - Sincronizar componentes.
+|
+|--------------------------------------------------------------------------
 */
 
-import { useEffect, useState } from "react";
+
+import {
+    useEffect,
+    useState
+} from "react";
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Nombre utilizado en localStorage.
+|--------------------------------------------------------------------------
+*/
+
+const STORAGE_KEY = "favorites";
+
+
+
+
 
 export function useFavorites() {
 
-    /*
-    Estado con los IDs favoritos.
-    */
-    const [favorites, setFavorites] = useState<string[]>([]);
 
     /*
-    Cargar favoritos al iniciar.
+    ----------------------------------------------------------------------
+    Estado donde se guardan los IDs favoritos.
+    ----------------------------------------------------------------------
     */
+
+    const [
+        favorites,
+        setFavorites
+    ] = useState<string[]>([]);
+
+
+
+
+
+    /*
+    ----------------------------------------------------------------------
+    Cargar favoritos al iniciar la aplicación.
+    ----------------------------------------------------------------------
+    */
+
     useEffect(() => {
 
-        const saved = localStorage.getItem("favorites");
+
+        const saved =
+            localStorage.getItem(STORAGE_KEY);
+
+
 
         if (saved) {
 
-            setFavorites(JSON.parse(saved));
+
+            setFavorites(
+                JSON.parse(saved)
+            );
+
 
         }
+
+
+
 
         /*
         Escuchar cambios realizados
         desde otros componentes.
         */
 
-        const updateFavorites = () => {
+        function updateFavorites() {
 
-            const data = localStorage.getItem("favorites");
 
-            if (data) {
+            const data =
+                localStorage.getItem(STORAGE_KEY);
 
-                setFavorites(JSON.parse(data));
 
-            } else {
 
-                setFavorites([]);
+            setFavorites(
 
-            }
+                data
+                    ? JSON.parse(data)
+                    : []
 
-        };
-
-        window.addEventListener("favoritesUpdated", updateFavorites);
-
-        return () => {
-
-            window.removeEventListener(
-                "favoritesUpdated",
-                updateFavorites
             );
 
-        };
-
-    }, []);
-
-    /*
-    Agregar o quitar favorito.
-    */
-    function toggleFavorite(id: string) {
-
-        let updated: string[];
-
-        if (favorites.includes(id)) {
-
-            updated = favorites.filter(item => item !== id);
-
-        } else {
-
-            updated = [...favorites, id];
 
         }
 
-        setFavorites(updated);
 
-        localStorage.setItem(
-            "favorites",
-            JSON.stringify(updated)
+
+        window.addEventListener(
+
+            "favoritesUpdated",
+
+            updateFavorites
+
         );
+
+
+
+
+        return () => {
+
+
+            window.removeEventListener(
+
+                "favoritesUpdated",
+
+                updateFavorites
+
+            );
+
+
+        };
+
+
+    }, []);
+
+
+
+
+
+
+
+    /*
+    ----------------------------------------------------------------------
+    Agregar o eliminar favorito.
+    
+    Recibe:
+    - id del cóctel.
+    ----------------------------------------------------------------------
+    */
+
+
+    function toggleFavorite(
+        id: string
+    ) {
+
+
+
+        const updated = favorites.includes(id)
+
+
+            ? favorites.filter(
+
+                item => item !== id
+
+            )
+
+
+            : [
+
+                ...favorites,
+
+                id
+
+            ];
+
+
+
+
 
         /*
-        Notificar al resto
-        de componentes.
+        Actualizamos estado.
         */
-        window.dispatchEvent(
-            new Event("favoritesUpdated")
+
+        setFavorites(updated);
+
+
+
+
+        /*
+        Guardamos en navegador.
+        */
+
+        localStorage.setItem(
+
+            STORAGE_KEY,
+
+            JSON.stringify(updated)
+
         );
+
+
+
+
+        /*
+        Avisamos a otros componentes.
+        */
+
+        window.dispatchEvent(
+
+            new Event(
+
+                "favoritesUpdated"
+
+            )
+
+        );
+
 
     }
 
+
+
+
+
+
     /*
-    Verificar si es favorito.
+    ----------------------------------------------------------------------
+    Verificar si un cóctel está marcado.
+    ----------------------------------------------------------------------
     */
-    function isFavorite(id: string) {
+
+
+    function isFavorite(
+        id: string
+    ) {
+
 
         return favorites.includes(id);
 
+
     }
 
+
+
+
+
+
+
     return {
+
 
         favorites,
 
@@ -118,6 +258,8 @@ export function useFavorites() {
 
         isFavorite
 
+
     };
+
 
 }

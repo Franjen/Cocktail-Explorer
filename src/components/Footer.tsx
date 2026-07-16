@@ -1,10 +1,29 @@
+/*
+|--------------------------------------------------------------------------
+| Footer.tsx
+|--------------------------------------------------------------------------
+|
+| Pie de página global.
+|
+| Se muestra al final de todas las páginas.
+|
+|--------------------------------------------------------------------------
+*/
+
+
 import "../styles/footer.css";
+
+
+
 
 function Footer() {
 
+
     return (
 
+
         <footer className="footer">
+
 
             <p>
 
@@ -12,11 +31,15 @@ function Footer() {
 
             </p>
 
+
+
             <p>
 
                 React + TypeScript + TheCocktailDB
 
             </p>
+
+
 
             <p>
 
@@ -24,10 +47,16 @@ function Footer() {
 
             </p>
 
+
+
         </footer>
+
 
     );
 
+
 }
+
+
 
 export default Footer;

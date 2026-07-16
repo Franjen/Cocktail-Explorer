@@ -1,12 +1,56 @@
-import { useEffect, useState } from "react";
+/*
+|--------------------------------------------------------------------------
+| SearchBar.tsx
+|--------------------------------------------------------------------------
+|
+| Barra de búsqueda de cócteles.
+|
+| Funciones:
+|
+| - Capturar texto escrito.
+| - Esperar 500ms después de escribir.
+| - Ejecutar búsqueda.
+|
+|--------------------------------------------------------------------------
+*/
+
+
+import {
+    useEffect,
+    useState
+} from "react";
+
 
 import "../styles/search.css";
 
+
+
+
+
+
 interface Props {
 
-    onSearch: (value: string) => void;
+
+    /*
+    Función recibida desde la página
+    Cocktails.tsx.
+    */
+
+    onSearch:
+
+    (
+        value: string
+    ) => void;
+
 
 }
+
+
+
+
+
+
+
 
 function SearchBar({
 
@@ -14,50 +58,118 @@ function SearchBar({
 
 }: Props) {
 
-    const [value, setValue] = useState("");
+
+
+    const [
+
+        value,
+
+        setValue
+
+    ] = useState("");
+
+
+
+
+
 
     /*
-    Cada vez que cambia el texto
-    esperamos 500 ms antes
-    de realizar la búsqueda.
+    ----------------------------------------------------------------------
+    Debounce
+
+    Evita realizar demasiadas peticiones
+    mientras el usuario escribe.
+    ----------------------------------------------------------------------
     */
+
 
     useEffect(() => {
 
+
+
         const timer = setTimeout(() => {
+
+
 
             onSearch(value);
 
+
+
         }, 500);
 
-        return () => clearTimeout(timer);
 
-    }, [value]);
+
+
+
+        return () => {
+
+
+            clearTimeout(timer);
+
+
+        };
+
+
+
+    }, [
+
+        value,
+
+        onSearch
+
+    ]);
+
+
+
+
+
+
 
     return (
 
+
         <div className="search-form">
+
 
             <input
 
+
                 type="text"
+
 
                 placeholder="Buscar cóctel..."
 
+
                 value={value}
 
-                onChange={(e) =>
 
-                    setValue(e.target.value)
+
+                onChange={
+
+                    (event) =>
+
+                        setValue(
+
+                            event.target.value
+
+                        )
 
                 }
 
+
             />
+
+
 
         </div>
 
+
     );
 
+
 }
+
+
+
 
 export default SearchBar;

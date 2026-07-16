@@ -1,12 +1,20 @@
 /*
-useCocktails.ts
-
-Hook personalizado encargado de:
-
-- Obtener cócteles.
-- Guardar información.
-- Controlar carga.
-- Controlar errores.
+|--------------------------------------------------------------------------
+| useCocktails.ts
+|--------------------------------------------------------------------------
+|
+| Hook personalizado encargado de administrar
+| la información de los cócteles.
+|
+| Funciones:
+|
+| - Obtener cócteles desde la API.
+| - Guardar resultados.
+| - Controlar estado de carga.
+| - Controlar errores.
+| - Ejecutar búsquedas.
+|
+|--------------------------------------------------------------------------
 */
 
 
@@ -27,81 +35,142 @@ import {
 
 
 
-
+/*
+|--------------------------------------------------------------------------
+| Hook useCocktails
+|--------------------------------------------------------------------------
+*/
 
 export function useCocktails() {
 
 
-
     /*
-    Lista de cócteles
+    ----------------------------------------------------------------------
+    Estado donde se almacenan los cócteles encontrados.
+    ----------------------------------------------------------------------
     */
 
-    const [cocktails, setCocktails] =
-        useState<Cocktail[]>([]);
-
-
-
-
-    /*
-    Estado de carga
-    */
-
-    const [loading, setLoading] =
-        useState(false);
-
+    const [
+        cocktails,
+        setCocktails
+    ] = useState<Cocktail[]>([]);
 
 
 
     /*
-    Mensaje de error
+    ----------------------------------------------------------------------
+    Estado para controlar el indicador de carga.
+    ----------------------------------------------------------------------
     */
 
-    const [error, setError] =
-        useState("");
+    const [
+        loading,
+        setLoading
+    ] = useState(false);
 
+
+
+    /*
+    ----------------------------------------------------------------------
+    Estado para guardar mensajes de error.
+    ----------------------------------------------------------------------
+    */
+
+    const [
+        error,
+        setError
+    ] = useState("");
 
 
 
 
     /*
-    Función para buscar cócteles
+    ----------------------------------------------------------------------
+    Función encargada de buscar cócteles.
+    
+    Recibe:
+    - name: texto ingresado por el usuario.
+
+    Realiza:
+    - Consulta a la API.
+    - Actualiza estados.
+    ----------------------------------------------------------------------
     */
+
 
     async function search(
         name: string
     ) {
 
 
+        /*
+        Evita enviar búsquedas vacías.
+        */
+
+        if (!name.trim()) {
+
+            setCocktails([]);
+
+            return;
+
+        }
+
+
+
         try {
 
+
+            /*
+            Activamos cargando.
+            */
 
             setLoading(true);
 
 
+
+            /*
+            Limpiamos errores anteriores.
+            */
+
             setError("");
 
 
+
+            /*
+            Solicitud a la API.
+            */
 
             const data =
                 await searchCocktails(name);
 
 
 
+            /*
+            Guardamos resultados.
+            */
+
             setCocktails(data);
 
 
 
-        } catch (error) {
+        } catch {
 
+
+            /*
+            En caso de error mostramos mensaje.
+            */
 
             setError(
-                "Error al cargar cócteles"
+                "No fue posible cargar los cócteles."
             );
 
 
         } finally {
 
+
+            /*
+            Siempre apagamos el estado loading.
+            */
 
             setLoading(false);
 
@@ -116,10 +185,12 @@ export function useCocktails() {
 
 
     /*
-    Carga inicial automática
+    ----------------------------------------------------------------------
+    Carga inicial automática.
 
-    Cuando la página abre,
-    buscamos cócteles con la letra a.
+    Cuando el usuario entra por primera vez
+    se muestran resultados utilizando la letra "a".
+    ----------------------------------------------------------------------
     */
 
 

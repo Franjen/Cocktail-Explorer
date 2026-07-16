@@ -1,21 +1,161 @@
 /*
-=========================================================
-Favorites.tsx
-
-Página donde se mostrarán todos
-los cócteles marcados como favoritos.
-
-En esta primera versión construiremos
-la estructura y posteriormente
-la conectaremos con el Hook.
-=========================================================
+|--------------------------------------------------------------------------
+| Favorites.tsx
+|--------------------------------------------------------------------------
+|
+| Página donde aparecen los cócteles favoritos.
+|
+|--------------------------------------------------------------------------
 */
+
+
+import {
+
+    useEffect,
+
+    useState
+
+} from "react";
+
+
+import CocktailCard from "../components/CocktailCard";
+
+
+import type {
+
+    Cocktail
+
+} from "../types/Cocktail";
+
+
+import {
+
+    getCocktailById
+
+} from "../services/cocktailApi";
+
+
+import {
+
+    useFavorites
+
+} from "../hooks/useFavorites";
+
+
+
+
+
+
 
 function Favorites() {
 
+
+
+
+
+    const {
+
+        favorites
+
+    } = useFavorites();
+
+
+
+
+
+
+
+    const [
+
+        cocktails,
+
+        setCocktails
+
+    ] = useState<Cocktail[]>([]);
+
+
+
+
+
+
+
+
+    useEffect(() => {
+
+
+
+
+
+        async function loadFavorites() {
+
+
+
+            const result: Cocktail[] = [];
+
+
+
+
+
+
+            for (const id of favorites) {
+
+
+
+                const cocktail =
+
+                    await getCocktailById(id);
+
+
+
+
+
+                if (cocktail)
+
+                    result.push(cocktail);
+
+
+
+            }
+
+
+
+
+
+
+            setCocktails(result);
+
+
+
+        }
+
+
+
+
+
+
+        loadFavorites();
+
+
+
+
+
+    }, [favorites]);
+
+
+
+
+
+
+
+
     return (
 
+
+
+
         <main>
+
+
 
             <h1>
 
@@ -23,17 +163,71 @@ function Favorites() {
 
             </h1>
 
-            <p>
 
-                Aquí aparecerán todos los
-                cócteles que marques como favoritos.
 
-            </p>
+
+
+            {
+
+                cocktails.length === 0
+
+                    ?
+
+                    <p>
+
+                        No tienes favoritos todavía.
+
+                    </p>
+
+
+                    :
+
+
+
+                    <section className="cocktails-grid">
+
+
+                        {
+
+                            cocktails.map(cocktail => (
+
+
+                                <CocktailCard
+
+                                    key={cocktail.idDrink}
+
+                                    cocktail={cocktail}
+
+                                />
+
+
+                            ))
+
+                        }
+
+
+                    </section>
+
+
+
+            }
+
+
+
+
 
         </main>
 
+
+
     );
 
+
+
+
+
 }
+
+
 
 export default Favorites;

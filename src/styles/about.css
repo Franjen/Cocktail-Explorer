@@ -1,33 +1,24 @@
 /*
 |--------------------------------------------------------------------------
-| error.css
+| about.css
 |--------------------------------------------------------------------------
 |
-| Mensajes de error.
+| Página informativa del proyecto.
 |
 |--------------------------------------------------------------------------
 */
 
 
-.error {
+.about {
 
 
-    background: #ffebee;
+    max-width: 900px;
 
 
-    color: #c62828;
+    margin: auto;
 
 
-    padding: 20px;
-
-
-    border-radius: 10px;
-
-
-    text-align: center;
-
-
-    margin: 30px 0;
+    line-height: 1.7;
 
 
 }
@@ -36,13 +27,40 @@
 
 
 
-.error h2 {
+
+.about p {
 
 
-    font-size: 35px;
+    margin-bottom: 20px;
 
 
-    margin-bottom: 10px;
+}
+
+
+
+
+
+
+.about ul {
+
+
+    margin-top: 20px;
+
+
+    padding-left: 30px;
+
+
+}
+
+
+
+
+
+
+.about li {
+
+
+    margin: 10px 0;
 
 
 }
