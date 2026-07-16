@@ -1,23 +1,10 @@
-/*
-Footer.tsx
-
-Componente reutilizable.
-
-Este componente se mostrará
-en todas las páginas de la aplicación.
-
-Su función es mostrar información
-general del proyecto en la parte inferior.
-*/
-
+import "../styles/footer.css";
 
 function Footer() {
 
-
     return (
 
-        <footer>
-
+        <footer className="footer">
 
             <p>
 
@@ -25,15 +12,11 @@ function Footer() {
 
             </p>
 
-
-
             <p>
 
-                Proyecto desarrollado con React + TypeScript
+                React + TypeScript + TheCocktailDB
 
             </p>
-
-
 
             <p>
 
@@ -41,12 +24,10 @@ function Footer() {
 
             </p>
 
-
         </footer>
 
     );
 
 }
-
 
 export default Footer;

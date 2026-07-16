@@ -84,8 +84,13 @@ function SearchBar({
 
     return (
 
-        <form onSubmit={handleSubmit}>
+        <form
 
+            className="search-form"
+
+            onSubmit={handleSubmit}
+
+        >
 
             <input
 
@@ -95,26 +100,15 @@ function SearchBar({
 
                 value={value}
 
-
-                /*
-                Cada vez que cambia el texto
-                actualizamos el estado.
-                */
-
-                onChange={(e) =>
-                    setValue(e.target.value)
-                }
-
+                onChange={(e) => setValue(e.target.value)}
 
             />
-
 
             <button>
 
                 Buscar
 
             </button>
-
 
         </form>
 

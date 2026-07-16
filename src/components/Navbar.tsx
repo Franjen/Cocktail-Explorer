@@ -15,6 +15,8 @@ import {
     Link
 } from "react-router-dom";
 
+import "../styles/navbar.css";
+
 
 
 function Navbar() {
@@ -22,71 +24,42 @@ function Navbar() {
 
     return (
 
-        <nav>
+        <nav className="navbar">
 
-
-            {/* Nombre de la aplicación */}
             <h2>
+
                 🍹 Cocktail Explorer
+
             </h2>
 
 
-
-            {/* Menú de navegación */}
             <ul>
 
-
-
                 <li>
 
-                    <Link to="/">
-
-                        Inicio
-
-                    </Link>
+                    <Link to="/">Inicio</Link>
 
                 </li>
 
-
-
-
-
                 <li>
 
-                    <Link to="/cocktails">
-
-                        Cócteles
-
-                    </Link>
+                    <Link to="/cocktails">Cócteles</Link>
 
                 </li>
 
-
-
-
-
                 <li>
 
-                    <Link to="/about">
-
-                        Acerca
-
-                    </Link>
+                    <Link to="/about">Acerca</Link>
 
                 </li>
-
-
 
             </ul>
-
-
 
         </nav>
 
     );
 
 }
-
 
 
 export default Navbar;
