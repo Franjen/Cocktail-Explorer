@@ -83,3 +83,33 @@
     background: #e68900;
 
 }
+
+.favorite-button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    background: #f44336;
+
+    color: white;
+
+    font-size: 15px;
+
+    transition: .3s;
+
+}
+
+.favorite-button:hover {
+
+    background: #d32f2f;
+
+}
